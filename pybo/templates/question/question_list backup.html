@@ -1,58 +1,22 @@
-{% extends 'base2.html' %}
-{% block css %}
-<style>
-    .btn-green{
-        background-color: #27a776;
-        color: #fff;
-    }
-    .page-link{
-        border: none !important;
-    }
-    .page-item{
-        --bs-pagination-bg: none;
-        --bs-pagination-color: #27a776;
-        --bs-pagination-disabled-bg: none;
-        --bs-pagination-active-bg: rgba(255,255,255,0);
-        --bs-pagination-active-border-color:  none;
-        --bs-pagination-hover-color: #fff;
-        --bs-pagination-hover-bg: none;
-        --bs-pagination-hover-border-color: #fff;
-    }
-    table{
-        border-bottom: 1px dotted #474a4d !important;
-    }
-</style>
-{% endblock %}
+{% extends 'base.html' %}
 {% block content %}
-<!-- ======= End Page Header ======= -->
-<div class="page-header d-flex align-items-center">
-    <div class="container position-relative">
-        <div class="row d-flex justify-content-center">
-        <div class="col-lg-6 text-center">
-            <h2>Question</h2>
-            <p>등록된 질문을 확인하세요.</p>
-        </div>
-        </div>
-    </div>
-</div>
-<!-- End Page Header -->
-<div class="container">
+<div class="container my-3">
     <div class="row my-3">
         <div class="col-6">
-            <a href="{{ url_for('question.create') }}" class="btn btn-green">질문 등록하기</a>
+            <a href="{{ url_for('question.create') }}" class="btn btn-primary">질문 등록하기</a>
         </div>
         <div class="col-6">
             <div class="input-group">
                 <input type="text" id="search_kw" class="form-control" value="{{ kw or '' }}">
                 <div class="input-group-append">
-                    <button class="btn btn-green" type="button" id="btn_search">찾기</button>
+                    <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
                 </div>
             </div>
         </div>
     </div>
-    <table class="table" style="color:#fff;">
+    <table class="table">
         <thead>
-            <tr class="text-center">
+            <tr class="text-center table-dark">
                 <th>번호</th>
                 <th style="width:50">제목</th>
                 <th>글쓴이</th>
@@ -106,7 +70,7 @@
         </li>
         {% endif %}
         {% else %}
-        <li class="disabled"    style=" --bs-pagination-disabled-bg: rgba(255,255,255,0);">
+        <li class="disabled">
             <a class="page-link" href="javascript:void(0)">...</a>
         </li>
         {% endif %}

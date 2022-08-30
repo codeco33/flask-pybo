@@ -1,6 +1,26 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
+{% block css %}
+<style>
+    .btn-outline-secondary {
+        --bs-btn-color: #27a776;
+        --bs-btn-border-color: #27a776;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #27a776;
+        --bs-btn-hover-border-color: #27a776;
+        --bs-btn-focus-shadow-rgb: 108,117,125;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #27a776;
+        --bs-btn-active-border-color: #27a776;
+        --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #27a776;
+        --bs-btn-disabled-bg: transparent;
+        --bs-btn-disabled-border-color: #27a776;
+        --bs-gradient: none;
+    }
+</style>
+{% endblock %}
 {% block content %}
-<div class="container my-3">
+<div class="container">
     <!-- flash 오류 -->
     {% for message in get_flashed_messages() %}
     <div class="alert alert-danger" role="alert">
@@ -10,7 +30,7 @@
     <!-- 질문 -->
     <h2 class="border-bottom py-2">{{ question.subject }}</h2>
     <div class="card my-3">
-        <div class="card-body">
+        <div class="card-body" style="color: #212529;">
             <div class="card-text">{{ question.content|markdown }}</div>
             <div class="d-flex justify-content-end">
                 {% if question.modify_date %}
@@ -42,7 +62,7 @@
     {% for answer in question.answer_set %}
     <a id="answer_{{ answer.id }}"></a>
     <div class="card my-3">
-        <div class="card-body">
+        <div class="card-body" style="color: #212529;">
              <div class="card-text">{{ answer.content|markdown }}</div>
              <div class="d-flex justify-content-end">
                 {% if answer.modify_date %}
@@ -89,9 +109,9 @@
         {% endif %}
         <!-- 오류표시 end -->
         <div class="mb-3">
-            <textarea {% if not g.user %}disabled{% endif %} name="content" id="content" class="form-control" rows="10"></textarea>
+            <textarea {% if not g.user %}disabled{% endif %} name="content" id="content" class="form-control" rows="10" style="color: #212529;"></textarea>
         </div>
-        <input type="submit" value="답변등록" class="btn btn-primary">
+        <input type="submit" value="답변등록" class="btn btn-green">
     </form>
 </div>
 {% endblock %}
